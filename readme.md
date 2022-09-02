@@ -12,7 +12,7 @@ npm i --save
 
 ## Constraints
 
-`Center aligning the div which is clicked as the active card with respective stylings.`
+`Center aligning the div which is clicked as the active card with respective stylings. Scrolling consistencies without jagging/lag.`
 
 ## Things in Action
 
