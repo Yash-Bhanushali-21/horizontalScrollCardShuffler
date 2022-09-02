@@ -1,0 +1,31 @@
+.App {
+  font-family: sans-serif;
+  text-align: center;
+}
+.container {
+  padding-top: 100px;
+  border: 1px solid red;
+  overflow-x: scroll;
+  scroll-behavior: smooth;
+  display: flex;
+  width: 100%;
+  gap: 20px;
+  scroll-snap-type: x-mandatory;
+  height: 200px;
+}
+.hidden {
+  visibility: hidden;
+}
+
+.card {
+  scroll-snap-align: start;
+  min-width: 100px;
+  border: 1px solid blue;
+  height: 100px;
+  transition: transform 0.2s; /* Animation */
+}
+
+.active {
+  border: 3px solid green;
+  transform: scale(1.5); /* Equal to scaleX(2) scaleY(0.5) */
+}
