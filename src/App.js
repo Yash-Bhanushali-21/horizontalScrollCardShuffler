@@ -67,11 +67,7 @@ export default function App() {
     preAndPostArray.length
   );
 
-  const [cards, setCards] = useState([
-    ...firstHalf,
-    ...defaultListOfCards,
-    ...secondHalf,
-  ]);
+  const [cards, setCards] = useState([...defaultListOfCards]);
 
   const [activeCardIndexState, setActiveCardIndexState] = useState(1);
 
@@ -92,6 +88,8 @@ export default function App() {
   };
   //possible approach on event(s) response container
 
+  const listToRender = [...firstHalf, ...cards, ...secondHalf];
+
   return (
     <div className="App">
       <div
@@ -99,7 +97,7 @@ export default function App() {
         id="scroller-container"
         ref={containerRef} /*onScroll={debounceScroll} */
       >
-        {cards.map((card, index) => (
+        {listToRender.map((card, index) => (
           <CustomCardComponent
             key={`card-index-${index}`}
             index={index}
@@ -113,49 +111,3 @@ export default function App() {
     </div>
   );
 }
-
-/* 
-
-
-
-  const gapValueRef = useRef(0);
-  const childWidthRef = useRef(0);
-  const visibleContainerRef = useRef(0);
- const doSomethingOnScroll = (e) => {
-    let container = e.target;
-
-    let containerChild = e.target.firstChild;
-    childWidthRef.current = containerChild.clientWidth;
-
-    const containerLeftScroll = container.scrollLeft;
-    console.log(container.clientWidth);
-
-    visibleContainerRef.current = container.clientWidth;
-
-    const computedStyles = window.getComputedStyle(container);
-    gapValueRef.current = parseInt(
-      computedStyles.getPropertyValue("gap").slice(0, -2),
-      10
-    );
-
-    //gapValueRef.current = gapValueRef.current;
-
-    const activeCardIndex = Math.floor(
-      Math.floor(containerLeftScroll) /
-        (childWidthRef.current + gapValueRef.current)
-    );
-
-    const numberOfPossibleCardsInVisibleContainer = Math.floor(
-      visibleContainerRef.current /
-        (childWidthRef.current + gapValueRef.current)
-    );
-
-    //what ever number of cards are posssible, we simply do a floor of /2
-    //to land in the middle.
-
-    if (activeCardIndexState !== activeCardIndex + 2) {
-      setActiveCardIndexState(activeCardIndex + 2);
-    }
-  };
-
-*/
