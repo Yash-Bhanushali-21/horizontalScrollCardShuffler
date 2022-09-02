@@ -10,6 +10,10 @@ npm i --save
 
 `Simple Implementable Apporach for horizontal scrolling of divs without a 3rd party implementation revolving around controllable ES6 standards.`
 
+## Constraints
+
+`Center aligning the div which is clicked as the active card with respective stylings.`
+
 ## Things in Action
 
 ![ScrollableDiv](/public/images/horizontalScrollSwipe.JPG)
