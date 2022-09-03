@@ -16,7 +16,7 @@ npm i --save
 
 ## Things in Action
 
-![ScrollableDiv](/public/images/horizontalScrollSwipe.JPG)
+![ScrollableDiv](/public/images/Animation.gif)
 
 ## References [Docs]
 
