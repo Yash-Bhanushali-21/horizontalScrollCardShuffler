@@ -1,4 +1,4 @@
-import "./styles.css"; //global styles.
+import "./styles/styles.css"; //global styles.
 import { CardContainer } from "./HomePage";
 
 export default function App() {

@@ -1,5 +1,5 @@
 import { useState, useRef } from "react";
-import "../styles.css"; //global styles.
+import "../styles/styles.css"; //global styles.
 import { Card } from "../components";
 import { totalCardsToPopulate } from "../utils";
 
