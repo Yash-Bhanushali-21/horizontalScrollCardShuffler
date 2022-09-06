@@ -10,7 +10,6 @@
   display: flex;
   width: 100%;
   gap: 20px;
-  scroll-snap-type: x-mandatory;
   height: 200px;
 }
 .hidden {
@@ -27,5 +26,11 @@
 
 .active {
   border: 3px solid green;
+  transform: scale(1.5); /* Equal to scaleX(2) scaleY(0.5) */
+}
+
+.card:hover {
+  border: 3px solid blue;
+  cursor: pointer;
   transform: scale(1.5); /* Equal to scaleX(2) scaleY(0.5) */
 }
