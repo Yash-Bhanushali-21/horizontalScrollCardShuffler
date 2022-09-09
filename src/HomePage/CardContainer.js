@@ -1,7 +1,7 @@
 import { useState, useRef } from "react";
 import "../styles/styles.css"; //global styles.
 import { Card } from "../components";
-import { totalCardsToPopulate } from "../utils";
+import { totalCardsToPopulate, createIntersectionObserver } from "../utils";
 
 const CardContainer = () => {
   //calc. default card list.
@@ -48,6 +48,8 @@ const CardContainer = () => {
     });
   };
 
+  const observer = createIntersectionObserver(setActiveCardIndexState);
+
   const listToRender = [...firstHalf, ...cards, ...secondHalf];
 
   return (
@@ -57,6 +59,7 @@ const CardContainer = () => {
           <Card
             key={`card-index-${index}`}
             index={index}
+            observer={observer}
             cardValue={card}
             scrollToElement={scrollToElement}
             activeCardIndexState={activeCardIndexState}

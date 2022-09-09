@@ -1,24 +1,32 @@
-import { useElementOnScreen } from "../hooks";
+import { useEffect, useRef } from "react";
 
-const intersectionOptions = {
-  root: null,
-  rootMargin: `0px -${Math.floor(
-    document.body.clientWidth / 2
-  )}px 0px  -${Math.floor(document.body.clientWidth / 2)}px`,
-  threshold: 0,
-};
+const Card = ({
+  index,
+  scrollToElement,
+  activeCardIndexState,
+  cardValue,
+  observer,
+}) => {
+  const cardRef = useRef(null);
 
-const Card = ({ index, scrollToElement, activeCardIndexState, cardValue }) => {
-  const [cardRef, isIntersecting] = useElementOnScreen(intersectionOptions);
+  useEffect(() => {
+    if (cardRef.current) {
+      observer.observe(cardRef.current);
+    }
+    return () => {
+      //clean up.
+      if (cardRef.current) observer.unobserve(cardRef.current);
+    };
+  }, [observer, cardRef]);
 
   return (
     <div
       ref={cardRef}
       onClick={() => scrollToElement(index)}
       id={`card-${index}`}
-      className={`card ${isIntersecting ? "active" : ""} ${
-        cardValue.toString().includes("dummy") ? "hidden" : null
-      }`}
+      className={`card
+      ${activeCardIndexState === `card-${index}` ? "active" : ""}
+      ${cardValue.toString().includes("dummy") ? "hidden" : ""}`}
     >
       {cardValue}
     </div>
